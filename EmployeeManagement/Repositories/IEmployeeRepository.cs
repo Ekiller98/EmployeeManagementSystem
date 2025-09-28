@@ -5,10 +5,10 @@ namespace EmployeeManagement.Repositories
     public interface IEmployeeRepository
     {
         //Get all employees
-        Task<IEnumerable<Employee>> GetAllAsync();
+        Task<IEnumerable<Employee>> GetAllEmployeesAsync();
 
         //Get employee by id
-        Task<Employee?> GetByIdAsync(int id);
+        Task<Employee?> GetEmployeeByIdAsync(int id);
 
         //Add new employee(post)
         Task AddEmployeeAsync(Employee employee);

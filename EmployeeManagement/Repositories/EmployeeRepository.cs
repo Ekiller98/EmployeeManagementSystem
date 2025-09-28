@@ -11,13 +11,15 @@ namespace EmployeeManagement.Repositories
         {
             _context = context;
         }
-
+        
+        //add
         public async Task AddEmployeeAsync(Employee employee)
         {
             await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
         }
 
+        //delete by id
         public async Task DeleteEmployeeAsync(int id)
         {
             var employeeInDb = await _context.Employees.FindAsync(id);
@@ -29,20 +31,23 @@ namespace EmployeeManagement.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Employee>> GetAllAsync()
+        //update
+        public async Task UpdateEmployeeAsync(Employee employee)
+        {
+            _context.Employees.Update(employee);
+            await _context.SaveChangesAsync();
+        }
+
+        //get all and get by id
+        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
             return await _context.Employees.ToListAsync();
         }
 
-        public async Task<Employee?> GetByIdAsync(int id)
+        public async Task<Employee?> GetEmployeeByIdAsync(int id)
         {
             return await _context.Employees.FindAsync(id);
         }
 
-        public async Task UpdateEmployeeAsync(Employee employee)
-        {
-            _context.Employees.Update(employee);
-            await _context.SaveChangesAsync();  
-        }
     }
 }
